@@ -19,9 +19,10 @@ namespace minhaAutomacao
         [TestMethod]
         public void CT001_EfetuarLoginComSucesso()
         {
+
             string resultadoAtual;
             string resultadoEsperado = "https://listapresente.casaevideo.com.br/";
-            
+
             IWebDriver driver = new ChromeDriver(chromeWebDriver);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
@@ -43,10 +44,10 @@ namespace minhaAutomacao
             nome.SendKeys("André");
 
             IWebElement email = driver.FindElement(By.Id("pre-sign-up-form-email"));
-            email.SendKeys("exemplo301@exemplo.com");
+            email.SendKeys("exemplo304@exemplo.com");
 
             IWebElement cpf = driver.FindElement(By.Id("pre-sign-up-form-cpf"));
-            cpf.SendKeys("178.760.060-27");
+            cpf.SendKeys("543.917.440-07");
 
             IWebElement senha = driver.FindElement(By.Id("pre-sign-up-form-password"));
             senha.SendKeys("Teste@Teste");
@@ -57,19 +58,19 @@ namespace minhaAutomacao
             IWebElement cadastrar = driver.FindElement(By.Id("btn-pre-sign-up-new"));
             cadastrar.Click();
 
-            try
+            resultadoAtual = driver.Url;
+
+            if (resultadoAtual.Contains(resultadoEsperado))
             {
-                Assert.IsTrue(driver.FindElement(By.Id("flash-notice-message")).Displayed);
                 Console.WriteLine("Caso de Teste Passou");
+                Assert.IsTrue(true, "Caso de Teste Passou");
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e);
+                Console.WriteLine("Caso de Teste Falhou");
             }
 
-            Console.Read();
-
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
 
             driver.Quit();
         }
