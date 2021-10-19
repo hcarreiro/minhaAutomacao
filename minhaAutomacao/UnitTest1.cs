@@ -43,10 +43,10 @@ namespace minhaAutomacao
             nome.SendKeys("André");
 
             IWebElement email = driver.FindElement(By.Id("pre-sign-up-form-email"));
-            email.SendKeys("exemplo@exemplo.com");
+            email.SendKeys("exemplo2@exemplo.com");
 
             IWebElement cpf = driver.FindElement(By.Id("pre-sign-up-form-cpf"));
-            cpf.SendKeys("768.967.090-30");
+            cpf.SendKeys("914.018.860-43");
 
             IWebElement senha = driver.FindElement(By.Id("pre-sign-up-form-password"));
             senha.SendKeys("Teste@Teste");
@@ -55,24 +55,20 @@ namespace minhaAutomacao
             termos.Click();
 
             IWebElement cadastrar = driver.FindElement(By.Id("btn-pre-sign-up-new"));
-            termos.Click();
+            cadastrar.Click();
 
-            IWebElement boasVindas = driver.FindElement(By.XPath("/html/body/header/nav[2]/div/div[3]/div[2]/div/span"));
-            boasVindas.Click();
-
-            resultadoAtual = driver.Title;
-            
-            if(resultadoAtual.Contains(resultadoEsperado))
+            try
             {
+                Assert.IsTrue(driver.FindElement(By.XPath("/html/body/header/nav[2]/div/div[3]/div[2]/div/span")).Displayed);
                 Console.WriteLine("Caso de Teste Passou");
-                Assert.IsTrue(true, "Caso de Teste Passou");
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("Caso de Teste Falhou");
+                Console.WriteLine(e);
             }
-            
-            
+
+            Console.Read();
+
             Thread.Sleep(3000);
 
             driver.Quit();
