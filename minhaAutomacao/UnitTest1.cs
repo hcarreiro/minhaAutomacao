@@ -43,10 +43,10 @@ namespace minhaAutomacao
             nome.SendKeys("André");
 
             IWebElement email = driver.FindElement(By.Id("pre-sign-up-form-email"));
-            email.SendKeys("exemplo2@exemplo.com");
+            email.SendKeys("exemplo301@exemplo.com");
 
             IWebElement cpf = driver.FindElement(By.Id("pre-sign-up-form-cpf"));
-            cpf.SendKeys("914.018.860-43");
+            cpf.SendKeys("178.760.060-27");
 
             IWebElement senha = driver.FindElement(By.Id("pre-sign-up-form-password"));
             senha.SendKeys("Teste@Teste");
@@ -59,7 +59,7 @@ namespace minhaAutomacao
 
             try
             {
-                Assert.IsTrue(driver.FindElement(By.XPath("/html/body/header/nav[2]/div/div[3]/div[2]/div/span")).Displayed);
+                Assert.IsTrue(driver.FindElement(By.Id("flash-notice-message")).Displayed);
                 Console.WriteLine("Caso de Teste Passou");
             }
             catch (Exception e)
